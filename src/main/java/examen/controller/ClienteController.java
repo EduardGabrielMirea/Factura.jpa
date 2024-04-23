@@ -18,6 +18,7 @@ public class ClienteController {
 
     public void modificarCliente() {
         Scanner scanner = new Scanner(System.in);
+        listarCliente();
         System.out.println("Ingrese el ID del cliente que desea modificar:");
         long id = Long.parseLong(scanner.nextLine());
         Cliente cliente = clienteRepository.findById(id).orElse(null);
@@ -46,6 +47,7 @@ public class ClienteController {
 
     public void borrarCliente() {
         Scanner scanner = new Scanner(System.in);
+        listarCliente();
         System.out.println("Ingrese el ID del cliente que desea borrar:");
         long id = Long.parseLong(scanner.nextLine());
         Cliente cliente = clienteRepository.findById(id).orElse(null);
@@ -60,6 +62,7 @@ public class ClienteController {
     public void crearCliente() {
         Cliente cliente = new Cliente();
         Scanner scanner = new Scanner(System.in);
+        listarCliente();
         System.out.println("Ingrese el nombre del cliente:");
         cliente.setNombre(scanner.nextLine());
         clienteRepository.save(cliente);

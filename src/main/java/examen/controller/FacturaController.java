@@ -14,13 +14,16 @@ import java.util.Scanner;
 public class FacturaController {
     private final IFacturaRepository facturaRepository;
     private final IClienteRepository clienteRepository;
+    private final ClienteController clienteController;
 
-    public FacturaController(IFacturaRepository facturaRepository, IClienteRepository clienteRepository) {
+    public FacturaController(IFacturaRepository facturaRepository, IClienteRepository clienteRepository, ClienteController clienteController) {
         this.facturaRepository = facturaRepository;
         this.clienteRepository = clienteRepository;
+        this.clienteController = clienteController;
     }
     public void crearFactura() {
         Scanner scanner = new Scanner(System.in);
+        clienteController.listarCliente();
         System.out.println("Ingrese el id del cliente :");
         Long v = 0L;
         try {
@@ -43,6 +46,7 @@ public class FacturaController {
 
     public void listarFacturasId() {
         Scanner scanner = new Scanner(System.in);
+        clienteController.listarCliente();
         System.out.println("Ingrese el id del cliente :");
         Long v = 0L;
         try {
@@ -59,6 +63,7 @@ public class FacturaController {
     }
     public void listarFacturasNombre() {
         Scanner scanner = new Scanner(System.in);
+        clienteController.listarCliente();
         System.out.println("Ingrese el nombre del cliente :");
         String nombre = scanner.nextLine();
         List<Cliente> cliente = clienteRepository.findByNombreIs(nombre);
@@ -71,6 +76,7 @@ public class FacturaController {
 
     public void listarFacturaImporte(){
         Scanner scanner = new Scanner(System.in);
+        clienteController.listarCliente();
         System.out.println("Determina el importe tope: ");
         Integer v = 0;
         try {
